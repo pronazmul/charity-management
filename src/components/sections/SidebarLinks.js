@@ -43,7 +43,7 @@ const SidebarLinks = () => {
   }, [])
 
   return (
-    <div className='pr-3 rounded divide-y divide-gray-200  text-gray-600 pb-8'>
+    <div className='pr-3 rounded divide-y divide-gray-200 text-gray-600 pb-8'>
       {sidebarLink &&
         sidebarLink.map((item) => (
           <div key={item.id} className={`space-y-2 pl-10 py-4`}>

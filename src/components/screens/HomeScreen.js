@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import Header from '../common/Header'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Dashboard from './../sections/Dashboard'
 import AllProducts from './../sections/AllProducts'
 import AddProducts from './../sections/AddProducts'
 import AllUser from './../sections/AllUser'
 import AddUser from './../sections/AddUser'
-import SuspandedUser from './../sections/SuspandedUser'
-import PendingRequest from './../sections/PendingRequest'
 import DextopSidebar from './../common/DextopSidebar'
 import MobileSidebar from './../common/MobileSidebar'
+import AllCharity from './../sections/AllCharity'
+import AddCharity from './../sections/AddCharity'
+import useAuth from '../Hooks/useAuth'
 
 const HomeScreen = () => {
+  const navigate = useNavigate()
+  const { logout } = useAuth()
   const location = useLocation()
   const redirect = location.search ? location.search.split('=')[1] : 'dashboard'
   const [dextopSidebar, setDextopSidebar] = useState(true)
@@ -27,13 +30,17 @@ const HomeScreen = () => {
       case 'add_donor':
         return <AddProducts />
       case 'all_charity':
-        return <AllUser />
+        return <AllCharity />
       case 'add_charity':
-        return <AddUser />
+        return <AddCharity />
       case 'all_users':
-        return <SuspandedUser />
+        return <AllUser />
       case 'add_user':
-        return <PendingRequest />
+        return <AddUser />
+      case 'logout':
+        logout()
+        navigate('/login')
+        return false
       default:
         return <Dashboard />
     }

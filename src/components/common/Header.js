@@ -67,7 +67,9 @@ const Header = ({ dextopSidebar, setDextopSidebar, foatingSidebarHandler }) => {
                 <DropDownMenu data={userDropDownData}>
                   <img
                     className='w-10 h-10 rounded-full shadow-sm'
-                    src={user.avatar}
+                    src={
+                      user.avatar || `./../../../public/images/logo/avatar.png`
+                    }
                     alt='Avatar'
                   />
                 </DropDownMenu>

@@ -41,7 +41,7 @@ const ProductsTable = ({ data }) => {
                 <input
                   className='input-box rounded-2xl pl-10 py-2'
                   type='text'
-                  placeholder='Searh for products'
+                  placeholder='Search users by name, email'
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />

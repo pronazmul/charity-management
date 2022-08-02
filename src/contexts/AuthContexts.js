@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = React.useState({})
 
   /**
-   *
+   *@desc Handle Login Feature using email and Password
    * @param {string} email
    * @param {string} password
    */
