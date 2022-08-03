@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Header from '../common/Header'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Dashboard from './../sections/Dashboard'
-import AllProducts from './../sections/AllProducts'
-import AddProducts from './../sections/AddProducts'
 import AllUser from './../sections/AllUser'
 import AddUser from './../sections/AddUser'
 import DextopSidebar from './../common/DextopSidebar'
@@ -11,6 +9,8 @@ import MobileSidebar from './../common/MobileSidebar'
 import AllCharity from './../sections/AllCharity'
 import AddCharity from './../sections/AddCharity'
 import useAuth from '../Hooks/useAuth'
+import AddDonor from '../sections/AddDonor'
+import AllDonor from './../sections/AllDonor'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
@@ -26,9 +26,9 @@ const HomeScreen = () => {
       case 'dashboard':
         return <Dashboard />
       case 'all_donors':
-        return <AllProducts />
+        return <AllDonor />
       case 'add_donor':
-        return <AddProducts />
+        return <AddDonor />
       case 'all_charity':
         return <AllCharity />
       case 'add_charity':

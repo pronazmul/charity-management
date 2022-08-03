@@ -61,25 +61,29 @@ export const adminSummery = [
   {
     id: 1,
     title: 'Ammount',
-    subtitle: '2000',
+    apiSlug: 'totalAmount',
+    value: 0,
     icon: 'fas fa-dollar-sign',
   },
   {
     id: 2,
     title: 'Donors',
-    subtitle: '50',
+    apiSlug: 'donors',
+    value: 0,
     icon: 'fas fa-gift',
   },
   {
     id: 3,
     title: 'Charities',
-    subtitle: '500',
+    apiSlug: 'totalCharity',
+    value: 0,
     icon: 'fas fa-hand-holding-heart',
   },
   {
     id: 4,
     title: 'Users',
-    subtitle: '10',
+    apiSlug: 'users',
+    value: 0,
     icon: 'fas fa-user-tie',
   },
 ]

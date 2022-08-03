@@ -9,16 +9,20 @@ const AllProducts = () => {
   const [products, setProducts] = useState()
   const [error, setError] = useState()
 
-  useEffect(async () => {
-    try {
-      const { data } = await axios.get(
-        'https://mydevshop.herokuapp.com/api/products'
-      )
-      setProducts(data)
-    } catch (error) {
-      setError(error)
-    }
-  }, [])
+  useEffect(
+    () =>
+      async function () {
+        try {
+          const { data } = await axios.get(
+            'https://mydevshop.herokuapp.com/api/products'
+          )
+          setProducts(data)
+        } catch (error) {
+          setError(error)
+        }
+      },
+    []
+  )
 
   return (
     <div className='m-2'>

@@ -48,12 +48,12 @@ const data = [
   },
 ]
 
-const CustomAreaChart = () => {
+const CustomAreaChart = ({ report, dataKey }) => {
   return (
     <div style={{ width: '100%', height: 300 }}>
       <ResponsiveContainer>
         <AreaChart
-          data={data}
+          data={report || data}
           margin={{
             top: 10,
             right: 0,
@@ -67,7 +67,7 @@ const CustomAreaChart = () => {
           <Tooltip />
           <Area
             type='monotone'
-            dataKey='Donate'
+            dataKey={dataKey}
             stroke='#8884d8'
             fill='#8884d8'
           />

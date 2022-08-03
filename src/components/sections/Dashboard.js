@@ -1,8 +1,28 @@
 import React from 'react'
+import axios from 'axios'
 import { adminSummery } from '../data'
 import CustomAreaChart from '../elements/CustomAreaChart'
+import ErrorMessage from './../elements/ErrorMessage'
 
 const Dashboard = () => {
+  const [details, setDetails] = React.useState(null)
+  const [error, setError] = React.useState(null)
+  React.useEffect(() => {
+    const getDetails = async () => {
+      try {
+        const response = await axios.get(
+          'http://103.107.184.159:5001/api/v1/dashboard'
+        )
+        setDetails(response.data.data)
+        setError(null)
+      } catch (error) {
+        setDetails(null)
+        setError('Something Went Wrong Fetching Request!')
+      }
+    }
+    getDetails()
+  }, [])
+
   return (
     <div className='m-4 space-y-6 '>
       {/* Application Overview */}
@@ -31,7 +51,9 @@ const Dashboard = () => {
                 </div>
                 <div className='text-base'>
                   <p className='font-bold text-gray-600'>{item.title}</p>
-                  <p className='text-gray-400'>{item.subtitle}</p>
+                  <p className='text-gray-400'>
+                    {details ? details[item.apiSlug] : item.value}
+                  </p>
                 </div>
               </div>
             ))}
@@ -47,7 +69,7 @@ const Dashboard = () => {
         </div>
         <div className='grid grid-cols-1 gap-3'>
           <div className='areachart'>
-            <CustomAreaChart />
+            <CustomAreaChart report={details?.report} dataKey='donate' />
           </div>
         </div>
       </div>
