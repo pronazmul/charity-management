@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
       setLoading(true)
       let config = {
         method: 'POST',
-        url: `${process.env.REACT_APP_AUTH_SERVER}/auth`,
+        url: 'http://103.107.184.159:5001/api/v1/users/auth',
         headers: {
           'Content-Type': 'application/json',
         },

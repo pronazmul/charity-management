@@ -33,7 +33,7 @@ const AllCharity = () => {
           <div className='flex relative pl-10 py-3 '>
             <div className='absolute -left-1'>
               <span className='bg-primary h-8 w-8 rounded-full text-white flex justify-center items-center'>
-                <i className='fas fa-user'></i>
+                <i className='fas fas fa-gift'></i>
               </span>
             </div>
             <div className=' w-full flex justify-between items-baseline'>
@@ -41,7 +41,7 @@ const AllCharity = () => {
                 All Charity
               </h3>
               <Link
-                to='?tab=add_product'
+                to='?tab=add_charity'
                 className='  text-gray-500 font-semibold border bg-white shadow-md rounded-lg px-4 py-2 text-sm hover:bg-primary hover:text-white transition duration-300'
               >
                 Add Charity
@@ -62,15 +62,7 @@ const AllCharity = () => {
               'city',
               'division',
             ]}
-            searchBy={[
-              'item',
-              'charityFor',
-              'quantity',
-              'unit',
-              'total',
-              'city',
-              'division',
-            ]}
+            searchBy={['item', 'charityFor', 'unit', 'city', 'division']}
           />
         </div>
       ) : (

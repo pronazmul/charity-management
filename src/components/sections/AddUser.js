@@ -44,7 +44,7 @@ const AddUser = () => {
         <div className='p-4 space-y-4'>
           <div className='flex space-x-4 items-baseline'>
             <span className='bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center'>
-              <i className='fas fas fa-gift' />
+              <i className='fas fas fa-user' />
             </span>
             <h3 className='text-gray-500 text-sm lg:text-base font-black uppercase'>
               Add User

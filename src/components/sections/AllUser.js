@@ -43,7 +43,7 @@ const AllUser = () => {
                 Users List
               </h3>
               <Link
-                to='?tab=add_product'
+                to='?tab=add_user'
                 className='  text-gray-500 font-semibold border bg-white shadow-md rounded-lg px-4 py-2 text-sm hover:bg-primary hover:text-white transition duration-300'
               >
                 Add User

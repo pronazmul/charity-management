@@ -56,6 +56,22 @@ export const dashBoardDSidebarLinks = [
   },
 ]
 
+// Dashbord Profile Dropdown Data
+export const userDropDownData = [
+  {
+    id: 1,
+    title: 'Profile',
+    sublink: '/',
+    icon: 'fas fa-user-secret',
+  },
+  {
+    id: 2,
+    title: 'Logout',
+    sublink: 'logout',
+    icon: 'fas fa-power-off',
+  },
+]
+
 // Admin Features Summery Json
 export const adminSummery = [
   {
@@ -137,22 +153,6 @@ export const accrodionData = [
 
 // Table Entities Array Data
 export const entitiesData = [5, 10, 25, 50, 100]
-
-// Dashbord Profile Dropdown Data
-export const userDropDownData = [
-  {
-    id: 1,
-    title: 'Profile',
-    sublink: '/',
-    icon: 'fas fa-user-secret',
-  },
-  {
-    id: 2,
-    title: 'Logout',
-    sublink: '/',
-    icon: 'fas fa-power-off',
-  },
-]
 
 // Dashbord Profile Dropdown Data
 export const productListDropdown = [
