@@ -136,7 +136,7 @@ export const accrodionData = [
 ]
 
 // Table Entities Array Data
-export const entitiesData = [10, 25, 50, 100]
+export const entitiesData = [5, 10, 25, 50, 100]
 
 // Dashbord Profile Dropdown Data
 export const userDropDownData = [

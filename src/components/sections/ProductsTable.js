@@ -4,7 +4,7 @@ import DropDownMenu from '../elements/DropDownMenu'
 import BadgeIcon from './../elements/BadgeIcon'
 import CustomSelectList from './../elements/CustomSelectList'
 import { productListDropdown } from './../data'
-import { productFilter } from './../utilities/commonMethods'
+import { dataTableFilter } from './../utilities/commonMethods'
 import NothingFound from './../elements/NothingFound'
 import CustomPagination from './../elements/CustomPagination'
 
@@ -13,11 +13,12 @@ const ProductsTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [entities, setEntities] = useState(entitiesData[0])
 
-  const { filteredData, pages, totalData, startAt } = productFilter(
+  const { filteredData, pages, totalData, startAt } = dataTableFilter(
     searchQuery,
     currentPage,
     entities,
-    data
+    data,
+    ['name', 'description', 'brand', 'category']
   )
 
   return (

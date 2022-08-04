@@ -64,8 +64,6 @@ const AddProducts = () => {
   })
   const { handleChange, handleSubmit, errors, values, setFieldValue } = formik
 
-  const useEffect = (() => {}, [submitHandler.success])
-
   return (
     <div className='m-2'>
       {/* Toast Notification */}

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const LoginScreen = () => {
   const navigate = useNavigate()
   //Login Redirect
-  const { loading, message, user, login } = useAuth()
+  const { message, user, login } = useAuth()
 
   // Handle Login
   const formik = useFormik({

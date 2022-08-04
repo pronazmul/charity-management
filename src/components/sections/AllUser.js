@@ -3,7 +3,7 @@ import React from 'react'
 import ErrorMessage from './../elements/ErrorMessage'
 import Loader from './../elements/Loader'
 import { Link } from 'react-router-dom'
-import UsersTable from '../elements/UsersTable'
+import DataTable from '../elements/DataTable'
 
 const AllUser = () => {
   const [users, setUsers] = React.useState(null)
@@ -20,7 +20,7 @@ const AllUser = () => {
         setError(null)
       } catch (error) {
         setUsers(null)
-        setError('Something Went Wrong Fetching Request!')
+        setError('Unable To Fetch Data!')
       }
     }
     getDetails()
@@ -53,7 +53,11 @@ const AllUser = () => {
               </Link>
             </div>
           </div>
-          <UsersTable data={users} />
+          <DataTable
+            data={users}
+            columns={['name', 'email', 'mobile', 'roles']}
+            searchBy={['name', 'email', 'mobile']}
+          />
         </div>
       ) : (
         <Loader />
