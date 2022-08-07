@@ -23,7 +23,7 @@ export default function DropDownMenu({ data, children }) {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        to={`/?tab=${item.sublink}`}
+                        to={item.sublink}
                         className={`${
                           active ? 'bg-primary  text-white' : 'text-gray-500'
                         } flex rounded-md items-center w-full p-2 text-sm space-x-4`}

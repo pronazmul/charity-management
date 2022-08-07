@@ -2,11 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import { adminSummery } from '../data'
 import CustomAreaChart from '../elements/CustomAreaChart'
-import ErrorMessage from './../elements/ErrorMessage'
 
 const Dashboard = () => {
   const [details, setDetails] = React.useState(null)
-  const [error, setError] = React.useState(null)
+
   React.useEffect(() => {
     const getDetails = async () => {
       try {
@@ -14,10 +13,8 @@ const Dashboard = () => {
           'http://103.107.184.159:5001/api/v1/dashboard'
         )
         setDetails(response.data.data)
-        setError(null)
       } catch (error) {
         setDetails(null)
-        setError('Something Went Wrong Fetching Request!')
       }
     }
     getDetails()

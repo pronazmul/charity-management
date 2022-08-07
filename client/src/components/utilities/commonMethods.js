@@ -49,6 +49,21 @@ export const dataTableFilter = (
 }
 
 /**
+ *
+ * @param {Array<JSON>} sidebarLinks
+ * @param {String} searchBy String to search
+ * @returns {[{ name: 'Item Name', sublink: 'item_link' }]} Filtered Array of Links
+ */
+export const autoSuggestFilter = (sidebarLinks = [], searchBy) => {
+  let regx = new RegExp(searchBy, 'i')
+  return sidebarLinks
+    .filter((v) => v.nasted)
+    .map((v) => v.subCategory)
+    .flat()
+    .filter((v) => v.name.match(regx))
+}
+
+/**
  *@desc Data Table Filter Function
  * @param {String} search String
  * @param {Number} page

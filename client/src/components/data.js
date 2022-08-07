@@ -61,13 +61,13 @@ export const userDropDownData = [
   {
     id: 1,
     title: 'Profile',
-    sublink: '/',
+    sublink: '&modal=user_profile',
     icon: 'fas fa-user-secret',
   },
   {
     id: 2,
     title: 'Logout',
-    sublink: 'logout',
+    sublink: '&modal=user_logout',
     icon: 'fas fa-power-off',
   },
 ]

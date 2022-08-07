@@ -1,6 +1,14 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
+/**
+ * @desc Custom Modal
+ * @param {boolean} Modal Show Hide State
+ * @param {Function} Modal Toggler Function
+ * @param {children} Children Component
+ * @returns {void}
+ */
+
 const CustomModal = ({ open, modalHandler, children }) => {
   return (
     <>
@@ -46,11 +54,3 @@ const CustomModal = ({ open, modalHandler, children }) => {
   )
 }
 export default CustomModal
-
-/*
-@ Custom Modal
-@ param: open, modalHandler, children
--> open Boolean [true, false]
--> modalHandler (function to close modal)
--> children (To define Modal Body)
-*/
