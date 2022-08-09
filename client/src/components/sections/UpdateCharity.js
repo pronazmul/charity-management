@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import Loader from '../elements/Loader'
 import ErrorMessage from '../elements/ErrorMessage'
 import { truthyValuesFromObject } from '../utilities/commonMethods'
+import { updateCharitySchema } from '../validationShemas/YupValidationSchemas'
 
 const UpdateCharity = ({ id, modalHandler, update }) => {
   const [charity, setCharity] = React.useState(null)
@@ -69,6 +70,7 @@ const UpdateCharity = ({ id, modalHandler, update }) => {
               city: charity?.city,
               division: charity?.division,
             }}
+            validationSchema={updateCharitySchema}
             onSubmit={updateHandler}
           >
             {({ handleChange, handleSubmit, errors, values }) => (

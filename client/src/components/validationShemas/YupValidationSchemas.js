@@ -51,7 +51,6 @@ export const loginSchema = yup.object().shape({
     .matches(regx.password, 'Invalid Password!')
     .required('Password Is Required!'),
 })
-
 export const addUserSchema = yup.object().shape({
   name: yup.string().required('Name is Required!'),
   email: yup
@@ -83,7 +82,6 @@ export const addDonorSchema = yup.object().shape({
     .matches(/^[0-9]+$/, 'Must be digits only!')
     .required('Donation amount is required!'),
 })
-
 export const addCharitySchema = yup.object().shape({
   item: yup.string().required('Charity Item is Required!'),
   category: yup.string().required('Charity Category is Required!'),
@@ -97,6 +95,38 @@ export const addCharitySchema = yup.object().shape({
     .string()
     .matches(/^[0-9]+$/, 'Must be digits only!')
     .required('Net Price is Rquired!'),
+  city: yup.string().required('Charity City is Requied!'),
+  division: yup.string().required('Charity division is Requied!'),
+})
+
+export const updateUserSchema = yup.object().shape({
+  name: yup.string().required('Name is Required!'),
+  email: yup
+    .string()
+    .matches(regx.email, 'Invalid Email Address!')
+    .required('Email is Required!'),
+  mobile: yup
+    .string()
+    .matches(regx.mobile, 'Invalid Mobile Number!')
+    .required('Mobile Number is Required!'),
+  password: yup.string().matches(regx.password, 'Invalid Password!'),
+})
+export const updateDonorSchema = yup.object().shape({
+  name: yup.string().required('Name is Required!'),
+  email: yup
+    .string()
+    .matches(regx.email, 'Invalid Email Address!')
+    .required('Email is Required!'),
+  mobile: yup
+    .string()
+    .matches(regx.mobile, 'Invalid Mobile Number!')
+    .required('Mobile Number is Required!'),
+  organization: yup.string().required('Organization or Self Name!'),
+})
+export const updateCharitySchema = yup.object().shape({
+  item: yup.string().required('Charity Item is Required!'),
+  charityFor: yup.string(),
+  unit: yup.string().required('Charity Unit is Required!'),
   city: yup.string().required('Charity City is Requied!'),
   division: yup.string().required('Charity division is Requied!'),
 })

@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import Loader from '../elements/Loader'
 import ErrorMessage from '../elements/ErrorMessage'
 import { truthyValuesFromObject } from '../utilities/commonMethods'
+import { updateDonorSchema } from './../validationShemas/YupValidationSchemas'
 
 const UpdateDonor = ({ id, modalHandler, update }) => {
   const [donor, setDonor] = React.useState(null)
@@ -68,6 +69,7 @@ const UpdateDonor = ({ id, modalHandler, update }) => {
               mobile: donor?.mobile,
               organization: donor?.organization,
             }}
+            validationSchema={updateDonorSchema}
             onSubmit={updateHandler}
           >
             {({ handleChange, handleSubmit, errors, values }) => (

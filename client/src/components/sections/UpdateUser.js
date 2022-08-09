@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import Loader from '../elements/Loader'
 import ErrorMessage from '../elements/ErrorMessage'
 import { truthyValuesFromObject } from '../utilities/commonMethods'
+import { updateUserSchema } from '../validationShemas/YupValidationSchemas'
 
 const UpdateUser = ({ id, modalHandler, update }) => {
   const [user, setUser] = React.useState(null)
@@ -70,6 +71,7 @@ const UpdateUser = ({ id, modalHandler, update }) => {
               mobile: user?.mobile,
               password: '',
             }}
+            validationSchema={updateUserSchema}
             onSubmit={updateHandler}
           >
             {({ handleChange, handleSubmit, errors, values }) => (
