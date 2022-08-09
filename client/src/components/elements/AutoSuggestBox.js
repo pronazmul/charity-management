@@ -32,26 +32,28 @@ const AutoSuggestBox = () => {
         onChange={(e) => setAutoSuggestQuery(e.target.value)}
       />
 
-      <div
-        className={`absolute left-0 top-full bg-white shadow-md w-full p-3 divide-y divide-gray-300 divide-dashed transition duration-300 lg:text-sm text-xs font-semibold z-20 rounded-md opacity-0 ${
-          autoSuggestQuery && `opacity-100`
-        }`}
-      >
-        {suggestedLinks && suggestedLinks.length ? (
-          suggestedLinks.map((item) => (
-            <Link to={`/?tab=${item.sublink}`}>
-              <p
-                onClick={() => setAutoSuggestQuery('')}
-                className='p-2 hover:bg-gray-100 rounded-md text-gray-700'
-              >
-                {item.name}
-              </p>
-            </Link>
-          ))
-        ) : (
-          <p className='text-gray-700 '>No Matched Found!</p>
-        )}
-      </div>
+      {autoSuggestQuery && (
+        <div
+          className={`absolute left-0 top-full bg-white shadow-md w-full p-3 divide-y divide-gray-300 divide-dashed transition duration-300 lg:text-sm text-xs font-semibold z-20 rounded-md opacity-0${
+            autoSuggestQuery && `opacity-100`
+          }`}
+        >
+          {suggestedLinks && suggestedLinks.length ? (
+            suggestedLinks.map((item) => (
+              <Link to={`/?tab=${item.sublink}`}>
+                <p
+                  onClick={() => setAutoSuggestQuery('')}
+                  className='p-2 hover:bg-gray-100 rounded-md text-gray-700'
+                >
+                  {item.name}
+                </p>
+              </Link>
+            ))
+          ) : (
+            <p className='text-gray-700 '>No Matched Found!</p>
+          )}
+        </div>
+      )}
     </div>
   )
 }

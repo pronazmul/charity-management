@@ -78,7 +78,6 @@ const HomeScreen = () => {
         >
           <DextopSidebar redirect={redirect} />
         </div>
-        <div className='mobile'></div>
       </div>
       {/* Contant Section */}
       <div className='content h-screen overflow-y-scroll' id='sidebar-scroll'>
