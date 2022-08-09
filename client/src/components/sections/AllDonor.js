@@ -4,10 +4,50 @@ import ErrorMessage from './../elements/ErrorMessage'
 import Loader from './../elements/Loader'
 import { Link } from 'react-router-dom'
 import DataTable from '../elements/DataTable'
+import CustomModal from '../elements/CustomModal'
+import ViewDonor from './ViewDonor'
+import DeleteDonor from './DeleteDonor'
+import UpdateDonor from './UpdateDonor'
 
 const AllDonor = () => {
   const [data, setData] = React.useState(null)
   const [error, setError] = React.useState(null)
+  let [updateRequired, setUpdateRequired] = React.useState(false)
+
+  console.log({ data })
+
+  //Modal Functionalities:
+  const [viewModal, setViewModal] = React.useState(false)
+  const [editModal, setEditModal] = React.useState(false)
+  const [deleteModal, setDeleteModal] = React.useState(false)
+  const [donorId, setDonorId] = React.useState(null)
+
+  const modalCloser = () => {
+    setViewModal(false)
+    setEditModal(false)
+    setDeleteModal(false)
+  }
+
+  const setModal = (type) => {
+    switch (type) {
+      case 'view':
+        modalCloser()
+        setViewModal(true)
+        break
+      case 'edit':
+        modalCloser()
+        setEditModal(true)
+        break
+      case 'delete':
+        modalCloser()
+        setDeleteModal(true)
+        break
+      default:
+        return false
+    }
+  }
+
+  //Fetch All Donors
   React.useEffect(() => {
     const getDetails = async () => {
       try {
@@ -22,9 +62,34 @@ const AllDonor = () => {
       }
     }
     getDetails()
-  }, [])
+  }, [updateRequired])
+
   return (
     <div className='m-2'>
+      {/* Edit/Update/Delete Modal Handler */}
+      {viewModal && (
+        <CustomModal open={viewModal} modalHandler={modalCloser}>
+          <ViewDonor id={donorId} modalHandler={modalCloser} />
+        </CustomModal>
+      )}
+      {editModal && (
+        <CustomModal open={editModal} modalHandler={modalCloser}>
+          <UpdateDonor
+            id={donorId}
+            modalHandler={modalCloser}
+            update={setUpdateRequired}
+          />
+        </CustomModal>
+      )}
+      {deleteModal && (
+        <CustomModal open={deleteModal} modalHandler={modalCloser}>
+          <DeleteDonor
+            id={donorId}
+            modalHandler={modalCloser}
+            update={setUpdateRequired}
+          />
+        </CustomModal>
+      )}
       {error ? (
         <ErrorMessage>{error}</ErrorMessage>
       ) : data ? (
@@ -55,6 +120,8 @@ const AllDonor = () => {
             data={data}
             columns={['name', 'email', 'mobile', 'organization', 'amount']}
             searchBy={['name', 'email', 'mobile', 'organization']}
+            setModal={setModal}
+            setItem={setDonorId}
           />
         </div>
       ) : (
