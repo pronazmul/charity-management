@@ -1,11 +1,10 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 
 export default function DataTableDropdown({
   data,
   setModal,
-  setUserID,
+  setItem,
   object,
   children,
 }) {
@@ -31,7 +30,7 @@ export default function DataTableDropdown({
                       <p
                         onClick={() => {
                           setModal(item.sublink)
-                          setUserID(object._id)
+                          setItem(object._id)
                         }}
                         className={`${
                           active ? 'bg-primary  text-white' : 'text-gray-500'

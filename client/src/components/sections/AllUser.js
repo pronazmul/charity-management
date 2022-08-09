@@ -12,6 +12,7 @@ import UpdateUser from './UpdateUser'
 const AllUser = () => {
   const [users, setUsers] = React.useState(null)
   const [error, setError] = React.useState(null)
+  let [updateRequired, setUpdateRequired] = React.useState(false)
 
   // Modal Functionalities
   const [viewModal, setViewModal] = React.useState(false)
@@ -42,8 +43,6 @@ const AllUser = () => {
         return false
     }
   }
-
-  let [updateRequired, setUpdateRequired] = React.useState(false)
 
   React.useEffect(() => {
     const getDetails = async () => {
@@ -119,7 +118,7 @@ const AllUser = () => {
             columns={['name', 'email', 'mobile', 'roles']}
             searchBy={['name', 'email', 'mobile']}
             setModal={setModal}
-            setUserID={setUserID}
+            setItem={setUserID}
           />
         </div>
       ) : (

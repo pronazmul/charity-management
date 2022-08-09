@@ -8,7 +8,7 @@ import CustomPagination from './CustomPagination'
 import { dataTableDropdown } from './../data'
 import DataTableDropdown from './DataTableDropDown'
 
-const DataTable = ({ data, searchBy, columns, setModal, setUserID }) => {
+const DataTable = ({ data, searchBy, columns, setModal, setItem }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [entities, setEntities] = useState(entitiesData[0])
@@ -95,7 +95,7 @@ const DataTable = ({ data, searchBy, columns, setModal, setUserID }) => {
                           <DataTableDropdown
                             data={dataTableDropdown}
                             setModal={setModal}
-                            setUserID={setUserID}
+                            setItem={setItem}
                             object={item}
                           >
                             <BadgeIcon icon='fas fa-hand-pointer' />
