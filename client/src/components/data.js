@@ -61,13 +61,13 @@ export const userDropDownData = [
   {
     id: 1,
     title: 'Profile',
-    sublink: '&modal=user_profile',
+    sublink: '/?tab=profile',
     icon: 'fas fa-user-secret',
   },
   {
     id: 2,
     title: 'Logout',
-    sublink: '&modal=user_logout',
+    sublink: '/?tab=logout',
     icon: 'fas fa-power-off',
   },
 ]
@@ -153,6 +153,28 @@ export const accrodionData = [
 
 // Table Entities Array Data
 export const entitiesData = [5, 10, 25, 50, 100]
+
+// Data TAble Dropdown
+export const dataTableDropdown = [
+  {
+    id: 1,
+    title: 'View',
+    sublink: 'view',
+    icon: 'fas fa-eye',
+  },
+  {
+    id: 2,
+    title: 'Edit',
+    sublink: 'edit',
+    icon: 'fas fa-edit',
+  },
+  {
+    id: 3,
+    title: 'Delete',
+    sublink: 'delete',
+    icon: 'far fa-trash-alt',
+  },
+]
 
 // Dashbord Profile Dropdown Data
 export const productListDropdown = [

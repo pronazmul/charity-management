@@ -107,3 +107,17 @@ export const productFilter = (
     startAt: skipData,
   }
 }
+
+/**
+ * @desc Filter Truthy Values from Object
+ * @param {*} object 
+ * @returns {*} object of Trythy Values
+ */
+
+export const truthyValuesFromObject = (object) => {
+  return Object.keys(object)
+    .filter((key) => Boolean(object[key]))
+    .reduce((state, value) => {
+      return { ...state, [value]: object[value] }
+    }, {})
+}

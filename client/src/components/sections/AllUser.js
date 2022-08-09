@@ -4,12 +4,47 @@ import ErrorMessage from './../elements/ErrorMessage'
 import Loader from './../elements/Loader'
 import { Link } from 'react-router-dom'
 import DataTable from '../elements/DataTable'
+import CustomModal from './../elements/CustomModal'
+import ViewUser from './ViewUser'
+import DeleteUser from './DeleteUser'
+import UpdateUser from './UpdateUser'
 
 const AllUser = () => {
   const [users, setUsers] = React.useState(null)
   const [error, setError] = React.useState(null)
 
-  console.log({ users, error })
+  // Modal Functionalities
+  const [viewModal, setViewModal] = React.useState(false)
+  const [editModal, setEditModal] = React.useState(false)
+  const [deleteModal, setDeleteModal] = React.useState(false)
+  const [userId, setUserID] = React.useState(null)
+
+  const modalCloser = () => {
+    setViewModal(false)
+    setEditModal(false)
+    setDeleteModal(false)
+  }
+  const setModal = (type) => {
+    switch (type) {
+      case 'view':
+        modalCloser()
+        setViewModal(true)
+        break
+      case 'edit':
+        modalCloser()
+        setEditModal(true)
+        break
+      case 'delete':
+        modalCloser()
+        setDeleteModal(true)
+        break
+      default:
+        return false
+    }
+  }
+
+  let [updateRequired, setUpdateRequired] = React.useState(false)
+
   React.useEffect(() => {
     const getDetails = async () => {
       try {
@@ -24,9 +59,35 @@ const AllUser = () => {
       }
     }
     getDetails()
-  }, [])
+  }, [updateRequired])
+
   return (
     <div className='m-2'>
+      {/* Edit/Update/Delete Modal Handlers */}
+      {viewModal && (
+        <CustomModal open={viewModal} modalHandler={modalCloser}>
+          <ViewUser id={userId} modalHandler={modalCloser} />
+        </CustomModal>
+      )}
+      {editModal && (
+        <CustomModal open={editModal} modalHandler={modalCloser}>
+          <UpdateUser
+            id={userId}
+            modalHandler={modalCloser}
+            update={setUpdateRequired}
+          />
+        </CustomModal>
+      )}
+      {deleteModal && (
+        <CustomModal open={deleteModal} modalHandler={modalCloser}>
+          <DeleteUser
+            id={userId}
+            modalHandler={modalCloser}
+            update={setUpdateRequired}
+          />
+        </CustomModal>
+      )}
+
       {error ? (
         <ErrorMessage>{error}</ErrorMessage>
       ) : users ? (
@@ -57,6 +118,8 @@ const AllUser = () => {
             data={users}
             columns={['name', 'email', 'mobile', 'roles']}
             searchBy={['name', 'email', 'mobile']}
+            setModal={setModal}
+            setUserID={setUserID}
           />
         </div>
       ) : (

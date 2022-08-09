@@ -27,19 +27,12 @@ const { singleUploader } = require('../middlewares/upload/imageUploader')
 //Routes:
 
 router.post('/', userCreateValidator, userValidationHandler, createUser)
-router.get('/', authCheck, authorize(['admin']), allUsers)
+router.get('/', allUsers)
 router.post('/auth', userLogin)
-router.get('/profile', authCheck, userProfile)
-router.get('/:id', authCheck, authorize(['admin']), getSingleUser)
-router.put(
-  '/:id',
-  authCheck,
-  authorize(['admin', 'user']),
-  userUpdateValidator,
-  userValidationHandler,
-  updateUser
-)
-router.delete('/:id', authCheck, authorize(['admin']), deleteUser)
+router.get('/profile', userProfile)
+router.get('/:id', getSingleUser)
+router.put('/:id', updateUser)
+router.delete('/:id', deleteUser)
 router.post('/:id/upload')
 router.post(
   '/:id/upload',

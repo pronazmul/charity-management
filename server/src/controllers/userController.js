@@ -57,6 +57,7 @@ const userLogin = async (req, res, next) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        mobile: user.mobile,
         roles: user.roles,
         avatar:
           user.avatar || `${process.env.APP_URL}/uploads/users/avatar.jpg`,

@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { entitiesData } from '../data'
-import DropDownMenu from './DropDownMenu'
 import BadgeIcon from './BadgeIcon'
 import CustomSelectList from './CustomSelectList'
-import { productListDropdown } from '../data'
 import { dataTableFilter } from '../utilities/commonMethods'
 import NothingFound from './NothingFound'
 import CustomPagination from './CustomPagination'
+import { dataTableDropdown } from './../data'
+import DataTableDropdown from './DataTableDropDown'
 
-const DataTable = ({ data, searchBy, columns }) => {
+const DataTable = ({ data, searchBy, columns, setModal, setUserID }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [entities, setEntities] = useState(entitiesData[0])
@@ -92,9 +92,14 @@ const DataTable = ({ data, searchBy, columns }) => {
                           </td>
                         ))}
                         <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
-                          <DropDownMenu data={productListDropdown}>
+                          <DataTableDropdown
+                            data={dataTableDropdown}
+                            setModal={setModal}
+                            setUserID={setUserID}
+                            object={item}
+                          >
                             <BadgeIcon icon='fas fa-hand-pointer' />
-                          </DropDownMenu>
+                          </DataTableDropdown>
                         </td>
                       </tr>
                     ))}

@@ -12,7 +12,7 @@ import { Fragment } from 'react'
 const CustomModal = ({ open, modalHandler, children }) => {
   return (
     <>
-      <Transition appear show={open} as={Fragment}>
+      <Transition appear show={open}>
         <Dialog
           as='div'
           className='fixed inset-0 z-10 overflow-y-auto'
@@ -28,7 +28,7 @@ const CustomModal = ({ open, modalHandler, children }) => {
               leaveFrom='opacity-100'
               leaveTo='opacity-0'
             >
-              <Dialog.Overlay className='fixed inset-0 backdrop-filter backdrop-blur-sm ' />
+              <Dialog.Overlay className='fixed inset-0 backdrop-filter backdrop-blur-lg ' />
             </Transition.Child>
             <span
               className='inline-block h-screen align-middle'
@@ -45,7 +45,9 @@ const CustomModal = ({ open, modalHandler, children }) => {
               leaveFrom='opacity-100 scale-100'
               leaveTo='opacity-0 scale-95'
             >
-              {children}
+              <div className='inline-block w-full max-w-lg my-8 overflow-hidden align-middle transition-all transform'>
+                {children}
+              </div>
             </Transition.Child>
           </div>
         </Dialog>

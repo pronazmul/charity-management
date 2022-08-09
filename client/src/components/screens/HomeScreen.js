@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../common/Header'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import Dashboard from './../sections/Dashboard'
 import AllUser from './../sections/AllUser'
 import AddUser from './../sections/AddUser'
@@ -11,12 +11,13 @@ import AddCharity from './../sections/AddCharity'
 import useAuth from '../Hooks/useAuth'
 import AddDonor from '../sections/AddDonor'
 import AllDonor from './../sections/AllDonor'
+import UserProfile from '../sections/UserProfile'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
   const { logout } = useAuth()
-  const location = useLocation()
-  const redirect = location.search ? location.search.split('=')[1] : 'dashboard'
+  let [searchParams, setSearchParams] = useSearchParams()
+  const redirect = searchParams.get('tab') || 'dashboard'
   const [dextopSidebar, setDextopSidebar] = useState(true)
   const [floatingSidebar, setFloatingSidebar] = useState(false)
   const foatingSidebarHandler = () => setFloatingSidebar(!floatingSidebar)
@@ -25,6 +26,8 @@ const HomeScreen = () => {
     switch (params) {
       case 'dashboard':
         return <Dashboard />
+      case 'profile':
+        return <UserProfile />
       case 'all_donors':
         return <AllDonor />
       case 'add_donor':

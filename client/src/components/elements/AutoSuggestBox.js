@@ -40,7 +40,10 @@ const AutoSuggestBox = () => {
         {suggestedLinks && suggestedLinks.length ? (
           suggestedLinks.map((item) => (
             <Link to={`/?tab=${item.sublink}`}>
-              <p className='p-2 hover:bg-gray-100 rounded-md text-gray-700'>
+              <p
+                onClick={() => setAutoSuggestQuery('')}
+                className='p-2 hover:bg-gray-100 rounded-md text-gray-700'
+              >
                 {item.name}
               </p>
             </Link>

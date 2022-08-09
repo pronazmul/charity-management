@@ -1,5 +1,4 @@
 // External Module:
-const { format } = require('date-fns')
 const createError = require('http-errors')
 
 //Internal Module:
